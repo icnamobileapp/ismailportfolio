@@ -646,6 +646,116 @@
     .skill-card h3 { margin-bottom: 10px; font-size: 24px; letter-spacing: -.03em; }
     .skill-card p { margin-bottom: 0; color: var(--ink-soft); }
 
+
+
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .certificate-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 27px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 18px 55px rgba(7, 27, 45, .07);
+    }
+    .certificate-preview {
+      position: relative;
+      padding: 15px;
+      background: linear-gradient(180deg, #e9f1f5 0%, #f8fbfc 100%);
+      cursor: zoom-in;
+    }
+    .certificate-preview::after {
+      content: "Click to enlarge";
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(7, 27, 45, .86);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(5px);
+      transition: .2s ease;
+    }
+    .certificate-preview:hover::after,
+    .certificate-preview:focus::after {
+      opacity: 1;
+      transform: none;
+    }
+    .certificate-preview img {
+      width: 100%;
+      aspect-ratio: 11 / 8.5;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(7, 27, 45, .09);
+    }
+    .certificate-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 25px;
+    }
+    .certificate-issuer {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 14px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--cyan-soft);
+      color: #0b6877;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .certificate-card h3 {
+      margin-bottom: 10px;
+      font-size: 23px;
+      line-height: 1.22;
+      letter-spacing: -.03em;
+    }
+    .certificate-card p {
+      margin-bottom: 18px;
+      color: var(--ink-soft);
+      font-size: 15px;
+    }
+    .certificate-meta {
+      display: block;
+      margin-top: auto;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .certificate-link {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 850;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .certificate-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 13px 28px rgba(7, 27, 45, .10);
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: 1.15fr .85fr;
@@ -850,6 +960,7 @@
       .sticky-photo { position: relative; top: 0; min-height: 520px; }
       .sticky-photo img { height: 520px; }
       .numbers { grid-template-columns: repeat(2, 1fr); }
+      .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 440px 290px; }
       .gallery figure:first-child { grid-column: 1 / 3; grid-row: auto; }
     }
@@ -888,7 +999,7 @@
       .case-main-top { grid-template-columns: 1fr; }
       .logo-panel { width: 170px; }
       .step { grid-template-columns: 1fr; }
-      .skill-grid, .documents { grid-template-columns: 1fr; }
+      .skill-grid, .documents, .certificate-grid { grid-template-columns: 1fr; }
       .skill-card { min-height: 245px; }
       .gallery { display: grid; grid-template-columns: 1fr; grid-template-rows: none; }
       .gallery figure, .gallery figure:first-child { grid-column: auto; height: 330px; }
@@ -938,6 +1049,7 @@
         <a href="#case-study">Case study</a>
         <a href="#contribution">Contribution</a>
         <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
         <a href="#gallery">Gallery</a>
       </nav>
     </div>
@@ -963,7 +1075,7 @@
           </div>
 
           <div class="hero-media reveal">
-            <img class="hero-photo" src="team-group.webp" alt="NestIQ project team after the venture presentation" />
+            <img class="hero-photo" src="assets/team-group.webp" alt="NestIQ project team after the venture presentation" />
             <div class="float-card metric-card">
               <b>50</b>
               <span>paying landlords defined as the minimum viable revenue threshold</span>
@@ -997,7 +1109,7 @@
 
         <div class="about-grid">
           <article class="profile-card reveal">
-            <img src="team-three.webp" alt="Ismail with members of the NestIQ project team" />
+            <img src="assets/team-three.webp" alt="Ismail with members of the NestIQ project team" />
             <div class="profile-caption">
               <h3>Operations & Go-to-Market Lead</h3>
               <p>NestIQ venture-development project</p>
@@ -1032,7 +1144,7 @@
         <div class="case-grid">
           <article class="case-main reveal">
             <div class="case-main-top">
-              <div class="logo-panel"><img src="nestiq-logo.webp" alt="NestIQ logo" /></div>
+              <div class="logo-panel"><img src="assets/nestiq-logo.webp" alt="NestIQ logo" /></div>
               <div>
                 <h3>Smart properties. Better deals. One platform.</h3>
                 <p>The proposed platform reduces intermediary friction while giving users a clearer, more transparent transaction journey.</p>
@@ -1076,7 +1188,7 @@
 
         <div class="contribution-grid">
           <div class="sticky-photo reveal">
-            <img src="presentation-room.webp" alt="NestIQ team presenting the venture deck in a university classroom" />
+            <img src="assets/presentation-room.webp" alt="NestIQ team presenting the venture deck in a university classroom" />
           </div>
 
           <div class="steps">
@@ -1166,6 +1278,61 @@
       </div>
     </section>
 
+
+
+    <section id="certificates">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="kicker">Professional development</span>
+            <h2>Certificates that strengthen my operational profile.</h2>
+          </div>
+          <p>Continued learning in project management, business process improvement and customer service supports my ability to coordinate work, improve operational workflows and deliver stronger stakeholder experiences.</p>
+        </div>
+
+        <div class="certificate-grid">
+          <article class="certificate-card reveal">
+            <div class="certificate-preview zoomable" tabindex="0" role="button" aria-label="Enlarge Project Management for Business Process Improvement certificate">
+              <img src="assets/certificate-linkedin-project-management.webp" alt="LinkedIn Learning certificate for Project Management for Business Process Improvement" />
+            </div>
+            <div class="certificate-content">
+              <span class="certificate-issuer">LinkedIn Learning</span>
+              <h3>Project Management for Business Process Improvement</h3>
+              <p>Formal learning in project delivery and process improvement, supporting structured operational planning and continuous improvement.</p>
+              <span class="certificate-meta">Completed April 2026 · 50 minutes</span>
+              <a class="certificate-link" href="documents/certificate-linkedin-project-management.pdf" target="_blank" rel="noopener">View certificate PDF</a>
+            </div>
+          </article>
+
+          <article class="certificate-card reveal">
+            <div class="certificate-preview zoomable" tabindex="0" role="button" aria-label="Enlarge LinkedIn Learning Innovative Customer Service Techniques certificate">
+              <img src="assets/certificate-linkedin-customer-service.webp" alt="LinkedIn Learning certificate for Innovative Customer Service Techniques" />
+            </div>
+            <div class="certificate-content">
+              <span class="certificate-issuer">LinkedIn Learning</span>
+              <h3>Innovative Customer Service Techniques</h3>
+              <p>Customer-service development relevant to onboarding, stakeholder communication and the delivery of efficient digital service experiences.</p>
+              <span class="certificate-meta">Completed April 2026 · 43 minutes</span>
+              <a class="certificate-link" href="documents/certificate-linkedin-customer-service.pdf" target="_blank" rel="noopener">View certificate PDF</a>
+            </div>
+          </article>
+
+          <article class="certificate-card reveal">
+            <div class="certificate-preview zoomable" tabindex="0" role="button" aria-label="Enlarge PMI Innovative Customer Service Techniques certificate">
+              <img src="assets/certificate-pmi-customer-service.webp" alt="PMI Registered Education Provider certificate for Innovative Customer Service Techniques" />
+            </div>
+            <div class="certificate-content">
+              <span class="certificate-issuer">PMI Registered Education Provider</span>
+              <h3>Innovative Customer Service Techniques</h3>
+              <p>Additional professional development in customer service, completed through a PMI Registered Education Provider programme.</p>
+              <span class="certificate-meta">Completed April 2026 · 0.50 contact hours</span>
+              <a class="certificate-link" href="documents/certificate-pmi-customer-service.pdf" target="_blank" rel="noopener">View certificate PDF</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="gallery">
       <div class="container">
         <div class="section-head reveal">
@@ -1178,15 +1345,15 @@
 
         <div class="gallery">
           <figure class="reveal" tabindex="0">
-            <img src="team-group.webp" alt="NestIQ project team standing together after the presentation" />
+            <img src="assets/team-group.webp" alt="NestIQ project team standing together after the presentation" />
             <figcaption>Final team photograph</figcaption>
           </figure>
           <figure class="reveal" tabindex="0">
-            <img src="presentation-room.webp" alt="NestIQ presentation underway in a classroom" />
+            <img src="assets/presentation-room.webp" alt="NestIQ presentation underway in a classroom" />
             <figcaption>Presenting the venture concept</figcaption>
           </figure>
           <figure class="reveal" tabindex="0">
-            <img src="team-three.webp" alt="Three participants after the NestIQ presentation" />
+            <img src="assets/team-three.webp" alt="Three participants after the NestIQ presentation" />
             <figcaption>Project discussion and feedback</figcaption>
           </figure>
         </div>
@@ -1289,7 +1456,7 @@
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
     };
-    document.querySelectorAll('.gallery figure').forEach(figure => {
+    document.querySelectorAll('.gallery figure, .zoomable').forEach(figure => {
       const open = () => {
         const image = figure.querySelector('img');
         lightboxImage.src = image.src;
